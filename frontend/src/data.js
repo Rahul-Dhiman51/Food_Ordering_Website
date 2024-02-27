@@ -1,0 +1,79 @@
+export const sample_foods = [
+    {
+        id: '1',
+        name: 'Pizza Pepperoni',
+        cookTime: '10-20',
+        price: 10,
+        favorite: false,
+        origins: ['Italy'],
+        stars: 4.0,
+        imageUrl: 'food-1.jpg',
+        tags: ['FastFood', 'Pizza', 'Lunch']
+    },
+    {
+        id: '2',
+        name: 'Meatball',
+        price: 20,
+        cookTime: '20-30',
+        favorite: true,
+        origins: ['persia', 'middle-east', 'china'],
+        stars: 5.0,
+        imageUrl: 'food-2.jpg',
+        tags: ['SlowFood', 'Lunch']
+    },
+    {
+        id: '3',
+        name: 'Hamburger',
+        cookTime: '10-15',
+        price: 5,
+        favorite: false,
+        origins: ['germany', 'usa'],
+        stars: 3.5,
+        imageUrl: 'food-3.jpg',
+        tags: ['FastFood', 'Hamburger']
+    },
+    {
+        id: '4',
+        name: 'Fried Potatoes',
+        cookTime: '15-20',
+        price: 2,
+        favorite: true,
+        origins: ['belgium', 'france'],
+        stars: 5.0,
+        imageUrl: 'food-4.jpg',
+        tags: ['FastFood', 'Fry']
+    },
+    {
+        id: '5',
+        name: 'Chicken Soup',
+        cookTime: '40-50',
+        price: 11,
+        favorite: false,
+        origins: ['india', 'asia'],
+        stars: 3.5,
+        imageUrl: 'food-5.jpg',
+        tags: ['SLowFood', 'Soup']
+    },
+    {
+        id: '6',
+        name: 'Vegetable Pizza',
+        cookTime: '10-20',
+        price: 9,
+        favorite: false,
+        origins: ['Italy'],
+        stars: 4.0,
+        imageUrl: 'food-6.jpg',
+        tags: ['FastFood', 'Pizza', 'Lunch']
+    }
+];
+
+export const sampe_tags = [
+    { name: 'All', count: 6 },
+    { name: 'FastFood', count: 4 },
+    { name: 'SlowFood', count: 2 },
+    { name: 'Pizza', count: 2 },
+    { name: 'Lunch', count: 3 },
+    { name: 'Hamburger', count: 1 },
+    { name: 'Fry', count: 1 },
+    { name: 'Soup', count: 1 }
+];

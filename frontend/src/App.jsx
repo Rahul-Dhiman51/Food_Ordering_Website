@@ -1,3 +1,4 @@
+import AppRoutes from './AppRoutes'
 import Header from './components/Header/Header'
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
     <>
       <Header />
+      <AppRoutes />
     </>
   )
 }
