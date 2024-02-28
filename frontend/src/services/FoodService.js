@@ -1,4 +1,4 @@
-import { sampe_tags, sample_foods } from "../data";
+import { sample_tags, sample_foods } from "../data";
 
 export const getAll = async () => sample_foods;
 
@@ -8,7 +8,7 @@ export const search = async (searchTerm) => {
     );
 }
 
-export const getAllTags = async () => sampe_tags;
+export const getAllTags = async () => sample_tags;
 
 export const getAllByTag = async (tag) => {
     if (tag === 'All') return getAll()
