@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import classes from './tags.module.css'
 
 const Tags = ({ tags, forFoodPage }) => {
+    // console.log(tags);
     return (
         <div
             className={classes.container}

@@ -5,7 +5,7 @@ import StarRating from '../StarRating/StarRating';
 import Price from '../Price/Price';
 
 const Thumbnails = ({ foods }) => {
-    console.log(foods);
+    // console.log(foods);
     return (
         <ul className={classes.list}>
             {foods.map((food) => (

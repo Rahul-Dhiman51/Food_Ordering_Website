@@ -113,9 +113,9 @@ export const sample_foods = [
 
 export const sample_tags = [
     { name: 'All', count: 10 },
-    { name: 'FastFood', count: 6 },
+    { name: 'FastFood', count: 5 },
     { name: 'South Indian', count: 1 },
-    { name: 'North Indian', count: 3 },
+    { name: 'North Indian', count: 2 },
     { name: 'SlowFood', count: 1 },
     { name: 'Pizza', count: 2 },
     { name: 'Lunch', count: 7 },
@@ -123,3 +123,30 @@ export const sample_tags = [
     { name: 'Fry', count: 3 },
     { name: 'Soup', count: 1 },
 ];
+
+export const sample_users = [
+    {
+        id: 1,
+        name: 'Rahul',
+        email: 'rahul@gmail.com',
+        password: 'rahul123',
+        address: 'Delhi, India',
+        isAdmin: true,
+    },
+    {
+        id: 2,
+        name: 'Apoorv',
+        email: 'apoorv@gmail.com',
+        password: 'apoorv123',
+        address: 'Jaipur, India',
+        isAdmin: false,
+    },
+    {
+        id: 3,
+        name: 'Khanjan',
+        email: 'khanjan@gmail.com',
+        password: 'khanjan123',
+        address: 'Ahmedabad, India',
+        isAdmin: false,
+    },
+]
