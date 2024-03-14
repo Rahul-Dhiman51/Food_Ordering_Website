@@ -39,6 +39,7 @@ router.get('/tags', handler(async (req, res) => {
 }))
 
 router.get('/search/:searchTerm', handler(async (req, res) => {
+    // console.log(req.params)
     const { searchTerm } = req.params;
     const searchRegex = new RegExp(searchTerm, 'i'); // i means case insensitive
 
