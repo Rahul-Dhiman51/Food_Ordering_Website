@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import handler from 'express-async-handler'
 import auth from '../middleware/auth.mid.js';
-import { BAD_REQUEST } from '../constants/httpStatus.js';
+import { BAD_REQUEST, UNAUTHRIZED } from '../constants/httpStatus.js';
 import { OrderModel } from '../models/order.model.js';
 import { OrderStatus } from '../constants/orderStatus.js';
+import { UserModel } from '../models/user.model.js';
 
 const router = Router();
 router.use(auth)
@@ -24,11 +25,47 @@ router.post('/create', handler(async (req, res) => {
 })
 );
 
+router.put('/pay', handler(async (req, res) => {
+    // console.log("REQ:::::::::::::::::::::")
+    // console.log(req)
+    const { paymentId } = req.body;
+    // console.log(paymentId)
+    const order = await getNewOrderForCurrentUser(req)
+    // console.log("ORDER::::::::::::::::::")
+    // console.log(order);
+    if (!order) {
+        res.status(BAD_REQUEST).send('Order Not Found!')
+        return
+    }
+    order.paymentId = paymentId
+    order.status = OrderStatus.PAYED;
+    await order.save()
+    res.send(order._id)
+}))
+
+router.get('/track/:orderId', handler(async (req, res) => {
+    const { orderId } = req.params
+    const user = await UserModel.findById(req.user.id)
+
+    const filter = {
+        _id: orderId,
+    }
+
+    if (!user.isAdmin) {
+        filter.user = user._id
+    }
+
+    const order = await OrderModel.findOne(filter)
+    if (!order) return res.send(UNAUTHRIZED)
+
+    return res.send(order)
+}))
+
 router.get('/newOrderForCurrentUser', handler(async (req, res) => {
     // console.log(req)
     const order = await getNewOrderForCurrentUser(req)
     if (order) res.send(order)
-    else res.send(BAD_REQUEST).send()
+    else res.status(BAD_REQUEST).send()
 })
 );
 
