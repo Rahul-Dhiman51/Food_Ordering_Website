@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import classes from './orderTrackPage.module.css'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { trackOrderById } from '../../services/orderService'
 import NotFound from '../../components/NotFound/NotFound'
+import DateTime from '../../components/DateTime/DateTime'
+import OrderItemsList from '../../components/OrderItemsList/OrderItemsList'
+import Title from '../../components/Title/Title'
+import Map from '../../components/Map/Map'
 
 const OrderTrackPage = () => {
 
@@ -20,12 +24,45 @@ const OrderTrackPage = () => {
 
     return (
         order && <div className={classes.container}>
-            <div className="classes content">
+            <div className={classes.content}>
                 <h1> Order #{order.id}</h1>
-                <div>
-                    <strong>Date</strong>
+                <div className={classes.header}>
+                    <div>
+                        <strong>Date</strong>
+                        <DateTime date={order.createdAt} />
+                    </div>
+                    <div>
+                        <strong>Name</strong>
+                        {order.name}
+                    </div>
+                    <div>
+                        <strong>Address</strong>
+                        {order.address}
+                    </div>
+                    <div>
+                        <strong>State</strong>
+                        {order.status}
+                    </div>
+                    {order.paymentId && (
+                        <div>
+                            <strong>Payment ID</strong>
+                            {order.paymentId}
+                        </div>
+                    )}
                 </div>
+                <OrderItemsList order={order} />
             </div>
+
+            <div>
+                <Title title="Your Location" fontSize="1.6rem" />
+                <Map location={order.addressLatLng} readonly={true} />
+            </div>
+
+            {
+                order.status === 'NEW' && <div className={classes.payment}>
+                    <Link to="/payment">Go To Payment</Link>
+                </div>
+            }
         </div>
     )
 }
