@@ -18,8 +18,6 @@ const __dirname = dirname(__filename)
 const app = express();
 app.use(express.json());
 
-const PORT = 3000
-
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:5173'
@@ -36,6 +34,8 @@ app.get('*', (req, res) => {
     const indexFilePath = path.join(publicFolder, 'index.html')
     res.sendFile(indexFilePath)
 })
+
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)

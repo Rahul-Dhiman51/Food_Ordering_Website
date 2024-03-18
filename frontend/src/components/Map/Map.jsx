@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import classes from './map.module.css'
 import 'leaflet/dist/leaflet.css'
+import markerIconPng from '../../../public/marker-icon-2x.png'
 import {
     MapContainer,
     TileLayer,
@@ -9,6 +10,7 @@ import {
     useMapEvents,   // Hook to listen to map events
 } from 'react-leaflet'
 import { toast } from 'react-toastify'
+import * as L from 'leaflet'
 
 const Map = ({ readonly, location, onChange }) => {
 
@@ -60,6 +62,13 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
         }
     })
 
+    const markerIcon = new L.Icon({
+        iconUrl: markerIconPng,
+        iconSize: [25, 41],
+        iconAnchor: [12.5, 41],
+        popupAnchor: [0, -41],
+    });
+
     return (
         <>
             {!readonly && (
@@ -82,6 +91,7 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
                         }}
                         position={position}
                         draggable={!readonly}
+                        icon={markerIcon}
                     >
                         <Popup>Shipping location</Popup>
                     </Marker>

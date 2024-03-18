@@ -24,7 +24,7 @@ const reducer = (state, action) => {
 const OrderPage = () => {
     const [{ allStatus, orders }, dispatch] = useReducer(reducer, initialState)
     const { filter } = useParams()
-    console.log(filter)
+    // console.log(filter)
 
     useEffect(() => {
 
