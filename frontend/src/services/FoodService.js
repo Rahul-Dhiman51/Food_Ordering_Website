@@ -28,3 +28,8 @@ export const getById = async (foodId) => {
     const { data } = await axios.get(`/api/foods/${foodId}`)
     return data
 }
+
+export const deleteById = async (foodId) => {
+    const { data } = await axios.delete(`/api/foods/${foodId}`)
+    return data
+}
