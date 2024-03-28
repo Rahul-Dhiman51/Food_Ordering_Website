@@ -11,6 +11,7 @@ import PaymentPage from './pages/Payment/PaymentPage'
 import OrderTrackPage from './pages/OrderTrack/OrderTrackPage'
 import ProfilePage from './pages/Profile/ProfilePage'
 import OrderPage from './pages/Orders/OrderPage'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 const AppRoutes = () => {
     return (
@@ -28,6 +29,7 @@ const AppRoutes = () => {
             <Route path="/profile" element={<AuthRoute><ProfilePage /></AuthRoute>} />
             <Route path="/orders/:filter?" element={<AuthRoute><OrderPage /></AuthRoute>} />
             {/* The :filter? is a route parameter, which means it is optional */}
+            <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
         </Routes>
     )
 }
