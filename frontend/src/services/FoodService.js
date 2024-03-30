@@ -35,6 +35,7 @@ export const deleteById = async (foodId) => {
 }
 
 export const updateFood = async (food) => {
+    // console.log(food)
     await axios.put('/api/foods', food)
 }
 

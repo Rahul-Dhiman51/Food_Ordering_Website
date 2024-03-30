@@ -12,6 +12,7 @@ router.get('/', handler(async (req, res) => {
 
 router.put('/', admin, handler(async (req, res) => {
     const { id, name, price, tags, favourite, imageUrl, origins, cookTime } = req.body
+    // console.log(req.body)
 
     await FoodModel.updateOne(
         { _id: id },
@@ -116,6 +117,7 @@ router.get('/tag/:tag', handler(async (req, res) => {
 router.get('/:foodId', handler(async (req, res) => {
     const { foodId } = req.params;
     const food = await FoodModel.findById(foodId);
+    // console.log(food)
     res.send(food);
 }))
 // router.get('/:id', (req, res) => { })

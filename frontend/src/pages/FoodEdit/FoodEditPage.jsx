@@ -28,6 +28,7 @@ const FoodEditPage = () => {
         if (!isEditMode) return
 
         getById(foodId).then(food => {
+            // console.log(food)
             if (!food) return;
             reset(food)
             setImageUrl(food.imageUrl)
@@ -36,6 +37,7 @@ const FoodEditPage = () => {
 
     const submit = async (foodData) => {
         const food = { ...foodData, imageUrl }
+        // console.log(food)
 
         if (isEditMode) {
             await updateFood(food)

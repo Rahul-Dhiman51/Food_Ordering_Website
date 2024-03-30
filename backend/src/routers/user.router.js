@@ -104,6 +104,26 @@ router.put('/toggleBlock/:userId', admin, handler(async (req, res) => {
     res.send(user.isBlocked)
 }))
 
+router.get('/getById/:userId', admin, handler(async (req, res) => {
+    const { userId } = req.params
+    // console.log(userId)
+    const user = await UserModel.findById(userId).select("-password")
+
+    res.send(user)
+}))
+
+router.put('/update', admin, handler(async (req, res) => {
+    const { id, name, email, address, isAdmin } = req.body
+
+    await UserModel.findByIdAndUpdate(id, {
+        name,
+        email,
+        address,
+        isAdmin,
+    })
+    res.send()
+}))
+
 const generateTokenResponse = (user) => {
     // sign is used to create a token and pass the payload and secret
     //  key to it for verification at the frontend

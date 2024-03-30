@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import { getAll, toggleBlock } from '../../services/userService'
 import Title from '../../components/Title/Title'
 import { useAuth } from '../../hooks'
+import Search from '../../components/Search/Search'
+
 
 const UsersPage = () => {
 
@@ -31,6 +33,12 @@ const UsersPage = () => {
         <div className={classes.container}>
             <div className={classes.list}>
                 <Title title="Manage Users" />
+                <Search
+                    searchRoute="/admin/users/"
+                    defaultRoute="admin/users/"
+                    placeholder="Search Users"
+                    margin="1rem 0"
+                />
                 <div className={classes.list_items}>
                     <h3>Name</h3>
                     <h3>Email</h3>

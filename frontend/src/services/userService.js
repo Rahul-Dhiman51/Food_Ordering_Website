@@ -34,11 +34,23 @@ export const changePassword = async (passwords) => {
 }
 
 export const getAll = async (searchTerm) => {
-    const { data } = await axios.get('/api/users/getAll' + (searchTerm ?? ""))
+    const { data } = await axios.get('/api/users/getAll/' + (searchTerm ?? ""))
     return data
 }
 
 export const toggleBlock = async (userId) => {
     const { data } = await axios.put('/api/users/toggleBlock/' + userId)
+    return data
+}
+
+export const getById = async (userId) => {
+    // console.log(userId)
+    const { data } = await axios.get('/api/users/getById/' + userId)
+    return data
+}
+
+export const updateUser = async (userData) => {
+    // console.log(userId)
+    const { data } = await axios.put('/api/users/update/', userData)
     return data
 }

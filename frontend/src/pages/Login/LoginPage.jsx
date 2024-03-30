@@ -6,6 +6,7 @@ import classes from './loginPage.module.css'
 import Title from '../../components/Title/Title'
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
+import { EMAIL } from '../../constants/pattern'
 
 const LoginPage = () => {
 
@@ -40,10 +41,7 @@ const LoginPage = () => {
                         // This name 'email' in the register method should be the same as the name of the input in submit method
                         {...register('email', {
                             required: true,
-                            pattern: {
-                                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
-                                message: 'Email is not valid',
-                            }
+                            pattern: EMAIL
                         })}
                         error={errors.email}
                     />

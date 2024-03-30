@@ -49,6 +49,7 @@ const FoodsAdminPage = () => {
                 <Search
                     searchRoute="/admin/foods/"
                     defaultRoute="admin/foods/"
+                    placeholder="Search Foods"
                     margin="1rem 0"
                 />
                 <Link to="/admin/addFood" className={classes.add_food}>
