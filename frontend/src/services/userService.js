@@ -32,3 +32,13 @@ export const changePassword = async (passwords) => {
     // console.log(passwords)
     await axios.put('/api/users/changePassword', passwords)
 }
+
+export const getAll = async (searchTerm) => {
+    const { data } = await axios.get('/api/users/getAll' + (searchTerm ?? ""))
+    return data
+}
+
+export const toggleBlock = async (userId) => {
+    const { data } = await axios.put('/api/users/toggleBlock/' + userId)
+    return data
+}

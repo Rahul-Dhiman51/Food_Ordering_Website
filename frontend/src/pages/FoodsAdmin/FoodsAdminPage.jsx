@@ -62,7 +62,7 @@ const FoodsAdminPage = () => {
                             <Link to={'/food/' + food.id}>{food.name}</Link>
                             <Price price={food.price} />
                             <div className={classes.actions}>
-                                <Link to={'/admin/editFood' + food.id}>Edit</Link>
+                                <Link to={'/admin/editFood/' + food.id}>Edit</Link>
                                 <Link onClick={() => deleteFood(food)} >Delete</Link>
                             </div>
                         </div>

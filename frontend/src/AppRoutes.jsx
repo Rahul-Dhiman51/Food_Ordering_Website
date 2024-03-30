@@ -12,8 +12,11 @@ import OrderTrackPage from './pages/OrderTrack/OrderTrackPage'
 import ProfilePage from './pages/Profile/ProfilePage'
 import OrderPage from './pages/Orders/OrderPage'
 import Dashboard from './pages/Dashboard/Dashboard'
-import AdminRouteExport from './components/AdminRoute/AdminRoute'
+import AdminRoute from './components/AdminRoute/AdminRoute'
 import FoodsAdminPage from './pages/FoodsAdmin/FoodsAdminPage'
+import FoodEditPage from './pages/FoodEdit/FoodEditPage'
+import UsersPage from './pages/UsersPage/UsersPage'
+import UserEditPage from './pages/UserEdit/UserEditPage'
 
 const AppRoutes = () => {
     return (
@@ -32,7 +35,11 @@ const AppRoutes = () => {
             <Route path="/orders/:filter?" element={<AuthRoute><OrderPage /></AuthRoute>} />
             {/* The :filter? is a route parameter, which means it is optional */}
             <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
-            <Route path="/admin/foods/:searchTerm?" element={<AdminRouteExport><FoodsAdminPage /></AdminRouteExport>} />
+            <Route path="/admin/foods/:searchTerm?" element={<AdminRoute><FoodsAdminPage /></AdminRoute>} />
+            <Route path="/admin/addFood" element={<AdminRoute><FoodEditPage /></AdminRoute>} />
+            <Route path="/admin/editFood/:foodId" element={<AdminRoute><FoodEditPage /></AdminRoute>} />
+            <Route path="/admin/users/:searchTerm?" element={<AdminRoute><UsersPage /></AdminRoute>} />
+            <Route path="/admin/editUser/:userId" element={<AdminRoute><UserEditPage /></AdminRoute>} />
         </Routes>
     )
 }
