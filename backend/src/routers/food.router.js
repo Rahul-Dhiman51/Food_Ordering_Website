@@ -1,11 +1,58 @@
 import { Router } from "express";
 import { FoodModel } from "../Models/food.model.js";
 import handler from "express-async-handler";
+import admin from "../middleware/admin.mid.js";
+
 const router = Router();
 
 router.get('/', handler(async (req, res) => {
     const foods = await FoodModel.find({})
     res.send(foods);
+}))
+
+router.put('/', admin, handler(async (req, res) => {
+    const { id, name, price, tags, favourite, imageUrl, origins, cookTime } = req.body
+    // console.log(req.body)
+
+    await FoodModel.updateOne(
+        { _id: id },
+        {
+            name,
+            price,
+            // after update tags are coming as string. Converting them into array
+            tags: tags.split ? tags.split(',') : tags,
+            favourite,
+            imageUrl,
+            origins: origins.split ? origins.split(',') : origins,
+            cookTime
+        }
+    )
+    res.send()
+}))
+
+router.post('/', admin, handler(async (req, res) => {
+    const { name, price, tags, favourite, imageUrl, origins, cookTime } = req.body
+
+    const food = new FoodModel({
+        name,
+        price,
+        // after update tags are coming as string. Converting them into array
+        tags: tags.split ? tags.split(',') : tags,
+        favourite,
+        imageUrl,
+        origins: origins.split ? origins.split(',') : origins,
+        cookTime
+    })
+
+    await food.save()
+
+    res.send(food)
+}))
+
+router.delete('/:foodId', admin, handler(async (req, res) => {
+    const { foodId } = req.params
+    await FoodModel.deleteOne({ _id: foodId })
+    res.send()
 }))
 
 router.get('/tags', handler(async (req, res) => {
@@ -70,6 +117,7 @@ router.get('/tag/:tag', handler(async (req, res) => {
 router.get('/:foodId', handler(async (req, res) => {
     const { foodId } = req.params;
     const food = await FoodModel.findById(foodId);
+    // console.log(food)
     res.send(food);
 }))
 // router.get('/:id', (req, res) => { })
